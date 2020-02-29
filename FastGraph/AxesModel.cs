@@ -7,7 +7,7 @@ namespace FastGraph
         public string yName;
 
         public int xMargin = 20;
-        public int yMargin = 20;
+        public int yMargin = 40;
 
         public AxesModel(string xName, string yName)
         {

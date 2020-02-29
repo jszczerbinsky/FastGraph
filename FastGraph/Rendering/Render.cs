@@ -26,14 +26,32 @@ namespace FastGraph.Rendering
             );
             g.DrawLine(new Pen(new SolidBrush(Color.Black)),
                 new Point(
-                    axesModel.yMargin,
+                    axesModel.xMargin,
                     imageSize.Height-axesModel.yMargin
                 ),
                 new Point(
-                    imageSize.Width -axesModel.xMargin,
+                    imageSize.Width,
                     imageSize.Height-axesModel.yMargin
                 )
             );
+        }
+        private static void RenderAsymptote(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale, Size imageSize, AxesModel axesModel, Asymptote asymptote)
+        {
+            Point start = new Point();
+            Point end = new Point();
+
+            if(asymptote.Axis == Axis.X)
+            {
+                start = new Point(axesModel.xMargin+(int)(((double)asymptote.Coordinate - (double)xStart)*xScale), 0);
+                end = new Point(axesModel.xMargin + (int)(((double)asymptote.Coordinate - (double)xStart) * xScale), imageSize.Height - axesModel.yMargin);
+            }
+            else
+            {
+                start = new Point(axesModel.xMargin, axesModel.yMargin + (int)(((double)asymptote.Coordinate - (double)yStart) * yScale));
+                end = new Point(imageSize.Width,axesModel.yMargin + (int)(((double)asymptote.Coordinate - (double)yStart) * yScale));
+            }
+
+            g.DrawLine(new Pen(new SolidBrush(asymptote.Color)), start, end);
         }
         private static void RenderNode(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale, AxesModel axesModel, GraphNode node, Size imageSize)
         {
@@ -72,7 +90,11 @@ namespace FastGraph.Rendering
 
             RenderAxes(g, xScale, yScale, imageSize, graph.Axes);
 
-            foreach(GraphNode node in graph.Nodes)
+            foreach(Asymptote a in graph.Asymptotes)
+            {
+                RenderAsymptote(g, xStart, yStart, xSize, ySize, xScale, yScale, imageSize, graph.Axes, a);
+            }
+            foreach (GraphNode node in graph.Nodes)
             {
                 RenderNode(g, xStart, yStart, xSize, ySize, xScale, yScale, graph.Axes, node, imageSize);
             }

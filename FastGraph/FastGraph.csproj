@@ -36,6 +36,8 @@
     <Compile Include="GraphNode.cs" />
     <Compile Include="AxesModel.cs" />
     <Compile Include="Rendering\Render.cs" />
+    <Compile Include="Asymptote.cs" />
+    <Compile Include="Axis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rendering\" />
