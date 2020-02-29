@@ -51,6 +51,15 @@ namespace FastGraph.Rendering
                 end = new Point(imageSize.Width,axesModel.yMargin + (int)(((double)asymptote.Coordinate - (double)yStart) * yScale));
             }
 
+            if(asymptote.RenderCoordinate)
+            {
+                string s = asymptote.Axis.ToString() + " = " + asymptote.Coordinate;
+                StringFormat sf = new StringFormat();
+                if (asymptote.Axis == Axis.X)
+                    sf.FormatFlags = StringFormatFlags.DirectionVertical;
+                g.DrawString(s, SystemFonts.DefaultFont, new SolidBrush(asymptote.Color), new PointF(start.X+ 10, start.Y+ 10), sf);
+            }
+
             g.DrawLine(new Pen(new SolidBrush(asymptote.Color)), start, end);
         }
         private static void RenderNode(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale, AxesModel axesModel, GraphNode node, Size imageSize)
