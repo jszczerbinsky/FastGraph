@@ -1,2 +1,4 @@
 TestApp/
 .vs/
+bin/
+obj/
