@@ -6,10 +6,10 @@ namespace FastGraph
 {
     public class GraphNode
     {
-        string Name;
-        Color Color;
+        public string Name;
+        public Color Color = Color.Red;
 
-        List<Point> Values;
+        public List<Point> Values { get; private set; }
 
         public GraphNode(string name, List<Point> values)
         {

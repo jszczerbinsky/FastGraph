@@ -6,7 +6,7 @@ namespace FastGraph
 {
     public class Graph
     {
-        private List<GraphNode> Nodes = new List<GraphNode>();
+        internal List<GraphNode> Nodes = new List<GraphNode>();
         public AxesModel Axes;
         public Brush Background;
 

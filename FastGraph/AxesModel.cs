@@ -3,8 +3,11 @@ namespace FastGraph
 {
     public class AxesModel 
     {
-        string xName;
-        string yName;
+        public string xName;
+        public string yName;
+
+        public int xMargin = 20;
+        public int yMargin = 20;
 
         public AxesModel(string xName, string yName)
         {
