@@ -75,41 +75,55 @@ namespace FastGraph.Rendering
                 int xmar = axesModel.xMargin;
                 int ymar = axesModel.yMargin;
 
-                g.DrawLine(new Pen(new SolidBrush(node.Color)),
-                    new Point(
+                Point p1 = new Point(
                         xmar + (int)((x - (double)xStart) * xScale),
                         imageSize.Height - ymar - (int)((y - (double)yStart) * yScale)
-                    ),
-                    new Point(
+                    );
+
+                Point p2 = new Point(
                         xmar + (int)((x1 - (double)xStart) * xScale),
                         imageSize.Height - ymar - (int)((y1 - (double)yStart) * yScale)
-                    )
+                    );
+
+                if (node.RenderPoints)
+                {
+                    if (i == 0)
+                        g.FillEllipse(new SolidBrush(node.Color), p1.X - 4, p1.Y - 4, 8, 8);
+                    g.FillEllipse(new SolidBrush(node.Color), p2.X - 4, p2.Y - 4, 8, 8);
+                }
+
+                g.DrawLine(new Pen(new SolidBrush(node.Color),2 ),
+                    p1,
+                    p2
                 );
             }
         }
         private static void RenderValuePointers(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale,Size imageSize, Graph graph)
         {
-            int drawEveryX = xSize / graph.Axes.xPointersCount;
-            int drawEveryY = ySize / graph.Axes.yPointersCount;
+            StringFormat sfx = new StringFormat();
+            sfx.Alignment = StringAlignment.Center;
 
-            for (int x = xStart; x < xSize; x+= drawEveryX)
+            StringFormat sfy = new StringFormat();
+            sfy.LineAlignment = StringAlignment.Center;
+
+            for (int x = xStart; x < xSize; x+= graph.Axes.xPointersSpace)
             {
                 g.DrawString(x.ToString(), SystemFonts.DefaultFont, new SolidBrush(Color.Black), new PointF(
                     (float)((x-xStart) * xScale + graph.Axes.xMargin),
                     imageSize.Height - graph.Axes.yMargin
-                ));
+                ), sfx);
                 g.DrawLine(new Pen(new SolidBrush(Color.Black)),
                     new Point((int)((x-xStart) * xScale + graph.Axes.xMargin), imageSize.Height-graph.Axes.xMargin-10),
                     new Point((int)((x-xStart)*xScale + graph.Axes.xMargin), imageSize.Height-graph.Axes.xMargin)
                 );
             }
-            for (int y = yStart; y<yStart+ySize; y += drawEveryY)
+            for (int y = yStart; y<yStart+ySize; y += graph.Axes.yPointersSpace)
             {
                 g.DrawString(y.ToString(), SystemFonts.DefaultFont, new SolidBrush(Color.Black), new PointF(
                   0,
                   (float)((ySize-y+yStart) * yScale)
 
-              ));
+              ), sfy);
                 g.DrawLine(new Pen(new SolidBrush(Color.Black)),
                     new Point(graph.Axes.yMargin, (int)((ySize-y+yStart)*yScale)),
                     new Point(graph.Axes.yMargin+10, (int)((ySize-y+yStart)*yScale)
@@ -121,6 +135,9 @@ namespace FastGraph.Rendering
             Bitmap bmp = new Bitmap(imageSize.Width, imageSize.Height);
 
             Graphics g = Graphics.FromImage(bmp);
+
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+
             g.FillRectangle(graph.Background, 0, 0, imageSize.Width, imageSize.Height);
 
             double xScale = CalcScale(xSize, imageSize.Width, graph.Axes.xMargin);

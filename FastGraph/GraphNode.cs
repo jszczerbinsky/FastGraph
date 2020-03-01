@@ -11,6 +11,8 @@ namespace FastGraph
 
         public List<Point> Values { get; private set; }
 
+        public bool RenderPoints = true;
+
         public GraphNode(string name, List<Point> values)
         {
             this.Name = name;
