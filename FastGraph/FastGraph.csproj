@@ -34,7 +34,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="GraphNode.cs" />
-    <Compile Include="AxesModel.cs" />
     <Compile Include="Rendering\Render.cs" />
     <Compile Include="Asymptote.cs" />
     <Compile Include="Axis.cs" />
