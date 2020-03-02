@@ -54,6 +54,8 @@ namespace FastGraph.Rendering
             if(asymptote.RenderCoordinate)
             {
                 string s = asymptote.Axis.ToString() + " = " + asymptote.Coordinate;
+                if (asymptote.CustomName != null)
+                    s = asymptote.CustomName;
                 StringFormat sf = new StringFormat();
                 if (asymptote.Axis == Axis.X)
                     sf.FormatFlags = StringFormatFlags.DirectionVertical;
