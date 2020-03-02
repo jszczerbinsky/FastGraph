@@ -106,7 +106,7 @@ namespace FastGraph.Rendering
             StringFormat sfy = new StringFormat();
             sfy.LineAlignment = StringAlignment.Center;
 
-            for (int x = xStart; x < xSize; x+= graph.Axes.xPointersSpace)
+            for (double x = xStart; x < xSize; x+= graph.Axes.xPointersSpace)
             {
                 Point start = new Point((int)((x - xStart) * xScale + graph.Axes.xMargin), imageSize.Height - graph.Axes.xMargin - 10);
                 Point end = new Point((int)((x - xStart) * xScale + graph.Axes.xMargin), imageSize.Height - graph.Axes.xMargin);
@@ -123,7 +123,7 @@ namespace FastGraph.Rendering
                     end
                 );
             }
-            for (int y = yStart; y<yStart+ySize; y += graph.Axes.yPointersSpace)
+            for (double y = yStart; y<yStart+ySize; y += graph.Axes.yPointersSpace)
             {
                 Point start = new Point(graph.Axes.yMargin, (int)((ySize - y + yStart) * yScale));
                 Point end = new Point(graph.Axes.yMargin + 10, (int)((ySize - y + yStart) * yScale));

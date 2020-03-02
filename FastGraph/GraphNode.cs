@@ -9,11 +9,11 @@ namespace FastGraph
         public string Name;
         public Color Color = Color.Red;
 
-        public List<Point> Values { get; private set; }
+        public List<Coordinate> Values { get; private set; }
 
         public bool RenderPoints = true;
 
-        public GraphNode(string name, List<Point> values)
+        public GraphNode(string name, List<Coordinate> values)
         {
             this.Name = name;
             this.Values = values;

@@ -9,8 +9,8 @@ namespace FastGraph
         public int xMargin = 40;
         public int yMargin = 40;
 
-        public int xPointersSpace = 10;
-        public int yPointersSpace = 10;
+        public double xPointersSpace = 10;
+        public double yPointersSpace = 10;
 
         public bool ShowGrid = true;
 
