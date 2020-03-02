@@ -108,26 +108,38 @@ namespace FastGraph.Rendering
 
             for (int x = xStart; x < xSize; x+= graph.Axes.xPointersSpace)
             {
+                Point start = new Point((int)((x - xStart) * xScale + graph.Axes.xMargin), imageSize.Height - graph.Axes.xMargin - 10);
+                Point end = new Point((int)((x - xStart) * xScale + graph.Axes.xMargin), imageSize.Height - graph.Axes.xMargin);
+
+                if (graph.Axes.ShowGrid)
+                    start.Y = 0;
+
                 g.DrawString(x.ToString(), SystemFonts.DefaultFont, new SolidBrush(Color.Black), new PointF(
                     (float)((x-xStart) * xScale + graph.Axes.xMargin),
                     imageSize.Height - graph.Axes.yMargin
                 ), sfx);
                 g.DrawLine(new Pen(new SolidBrush(Color.Black)),
-                    new Point((int)((x-xStart) * xScale + graph.Axes.xMargin), imageSize.Height-graph.Axes.xMargin-10),
-                    new Point((int)((x-xStart)*xScale + graph.Axes.xMargin), imageSize.Height-graph.Axes.xMargin)
+                    start,
+                    end
                 );
             }
             for (int y = yStart; y<yStart+ySize; y += graph.Axes.yPointersSpace)
             {
+                Point start = new Point(graph.Axes.yMargin, (int)((ySize - y + yStart) * yScale));
+                Point end = new Point(graph.Axes.yMargin + 10, (int)((ySize - y + yStart) * yScale));
+
+                if (graph.Axes.ShowGrid)
+                    end.X = imageSize.Width;
+
                 g.DrawString(y.ToString(), SystemFonts.DefaultFont, new SolidBrush(Color.Black), new PointF(
                   0,
                   (float)((ySize-y+yStart) * yScale)
 
               ), sfy);
                 g.DrawLine(new Pen(new SolidBrush(Color.Black)),
-                    new Point(graph.Axes.yMargin, (int)((ySize-y+yStart)*yScale)),
-                    new Point(graph.Axes.yMargin+10, (int)((ySize-y+yStart)*yScale)
-                ));
+                start,
+                end
+                );
             }
         }
         public static Bitmap Image(int xStart, int yStart, int xSize, int ySize, Size imageSize, Graph graph)
@@ -146,7 +158,7 @@ namespace FastGraph.Rendering
             RenderAxes(g, xScale, yScale, imageSize, graph.Axes);
             RenderValuePointers(g, xStart, yStart, xSize, ySize, xScale, yScale, imageSize, graph);
 
-            foreach(Asymptote a in graph.Asymptotes)
+            foreach (Asymptote a in graph.Asymptotes)
             {
                 RenderAsymptote(g, xStart, yStart, xSize, ySize, xScale, yScale, imageSize, graph.Axes, a);
             }

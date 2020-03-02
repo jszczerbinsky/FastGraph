@@ -12,6 +12,8 @@ namespace FastGraph
         public int xPointersSpace = 10;
         public int yPointersSpace = 10;
 
+        public bool ShowGrid = true;
+
         public AxesModel(string xName, string yName)
         {
             this.xName = xName;
