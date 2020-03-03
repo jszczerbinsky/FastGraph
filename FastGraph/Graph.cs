@@ -17,7 +17,7 @@ namespace FastGraph
 
         public Graph()
         {
-            this.Style = GraphStyle.Bright;
+            this.Style = GraphStyle.Classic;
         }
         public void AddNode(GraphNode node)
         {
