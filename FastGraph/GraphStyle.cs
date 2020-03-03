@@ -1,0 +1,38 @@
+﻿using System;
+using System.Drawing;
+
+namespace FastGraph
+{
+    public class GraphStyle
+    {
+        public static GraphStyle Bright 
+        { 
+            get {
+                GraphStyle gs = new GraphStyle();
+                gs.ValuePointersPen = new Pen(new SolidBrush(Color.FromArgb(20, 0,0,0)), 2);
+                return gs; 
+            }
+        }
+        public static GraphStyle Dark
+        {
+            get
+            {
+                GraphStyle gs = new GraphStyle();
+                gs.Background = new SolidBrush(Color.FromArgb(61, 78, 91));
+                gs.AxisPen = new Pen(new SolidBrush(Color.FromArgb(51, 116, 165)), 2);
+                gs.ValuePointersTextBrush = new SolidBrush(Color.FromArgb(62, 138, 196));
+                gs.ValuePointersPen = new Pen(new SolidBrush(Color.FromArgb(20, 255, 255, 255)),2);
+                return gs;
+            }
+        }
+
+        public int xMargin = 40;
+        public int yMargin = 40;
+
+        public Brush Background = new SolidBrush(Color.Wheat);
+        public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
+
+        public Brush ValuePointersTextBrush = new SolidBrush(Color.Black);
+        public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);
+    }
+}

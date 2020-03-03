@@ -7,19 +7,17 @@ namespace FastGraph
     {
         internal List<GraphNode> Nodes = new List<GraphNode>();
         internal List<Asymptote> Asymptotes = new List<Asymptote>();
-        public Brush Background;
 
-        public int xMargin = 40;
-        public int yMargin = 40;
+        public GraphStyle Style;
 
-        public double xPointersSpace = 10;
-        public double yPointersSpace = 10;
+        public float xPointersSpace = 10;
+        public float yPointersSpace = 10;
 
         public bool ShowGrid = true;
 
         public Graph()
         {
-            Background = new SolidBrush(Color.White);
+            this.Style = GraphStyle.Bright;
         }
         public void AddNode(GraphNode node)
         {

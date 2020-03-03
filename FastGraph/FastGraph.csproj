@@ -38,6 +38,7 @@
     <Compile Include="Asymptote.cs" />
     <Compile Include="Axis.cs" />
     <Compile Include="Coordinate.cs" />
+    <Compile Include="GraphStyle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rendering\" />
