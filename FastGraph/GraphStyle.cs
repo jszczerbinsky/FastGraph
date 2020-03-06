@@ -35,6 +35,7 @@ namespace FastGraph
                 gs.AxisPen = new Pen(new SolidBrush(Color.FromArgb(51, 116, 165)), 2);
                 gs.ValuePointersTextBrush = new SolidBrush(Color.FromArgb(62, 138, 196));
                 gs.ValuePointersPen = new Pen(new SolidBrush(Color.FromArgb(20, 255, 255, 255)),2);
+                gs.AxisNameBrush = new SolidBrush(Color.FromArgb(51, 116, 165));
                 return gs;
             }
         }
@@ -42,7 +43,7 @@ namespace FastGraph
         public int LeftMargin = 100;
         public int BottomMargin = 70;
         public int TopMargin = 40;
-        public int RightMargin = 500;
+        public int RightMargin = 40;
 
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
         public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);

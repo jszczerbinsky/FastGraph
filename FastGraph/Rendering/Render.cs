@@ -42,7 +42,9 @@ namespace FastGraph.Rendering
             };
             StringFormat sfy = new StringFormat
             {
-                LineAlignment = StringAlignment.Center
+                LineAlignment = StringAlignment.Center,
+                FormatFlags = StringFormatFlags.DirectionVertical,
+                Alignment = StringAlignment.Center
             };
             g.DrawString(graph.xAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(graph.Style.LeftMargin + (imageSize.Width - graph.Style.LeftMargin - graph.Style.RightMargin)/2, imageSize.Height - 20), sfx);
             g.DrawString(graph.yAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(20, graph.Style.TopMargin + (imageSize.Height - graph.Style.TopMargin - graph.Style.BottomMargin)/2), sfy);
