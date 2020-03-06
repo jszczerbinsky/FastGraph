@@ -39,9 +39,11 @@
     <Compile Include="Axis.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="GraphStyle.cs" />
+    <Compile Include="IO\FileInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Rendering\" />
+    <Folder Include="IO\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -102,13 +102,17 @@ namespace FastGraph.Rendering
         }
         private static void RenderValuePointers(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale,Size imageSize, Graph graph)
         {
-            StringFormat sfx = new StringFormat();
-            sfx.Alignment = StringAlignment.Center;
+            StringFormat sfx = new StringFormat
+            {
+                Alignment = StringAlignment.Center
+            };
 
-            StringFormat sfy = new StringFormat();
-            sfy.LineAlignment = StringAlignment.Center;
+            StringFormat sfy = new StringFormat
+            {
+                LineAlignment = StringAlignment.Center
+            };
 
-            for (float x = xStart; x < xSize; x+= graph.xPointersSpace)
+            for (float x = xStart; x <= xSize; x+= graph.xPointersSpace)
             {
                 Point start = new Point((int)((x - xStart) * xScale + graph.Style.xMargin), imageSize.Height - graph.Style.xMargin - 10);
                 Point end = new Point((int)((x - xStart) * xScale + graph.Style.xMargin), imageSize.Height - graph.Style.xMargin);
@@ -121,13 +125,13 @@ namespace FastGraph.Rendering
                     imageSize.Height - graph.Style.yMargin
                 ), sfx);
 
-                if(x != (float)xStart)
+                if(x != xStart)
                 g.DrawLine(graph.Style.ValuePointersPen,
                     start,
                     end
                 );
             }
-            for (float y = yStart; y<yStart+ySize; y += graph.yPointersSpace)
+            for (float y = yStart; y<=yStart+ySize; y += graph.yPointersSpace)
             {
                 Point start = new Point(graph.Style.yMargin, (int)((ySize - y + yStart) * yScale));
                 Point end = new Point(graph.Style.yMargin + 10, (int)((ySize - y + yStart) * yScale));
@@ -140,7 +144,7 @@ namespace FastGraph.Rendering
                   (float)((ySize-y+yStart) * yScale)
 
               ), sfy);
-                if(y != (float)yStart)
+                if(y != yStart)
                     g.DrawLine(graph.Style.ValuePointersPen,
                     start,
                     end
