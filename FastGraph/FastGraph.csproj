@@ -8,6 +8,8 @@
     <RootNamespace>FastGraph</RootNamespace>
     <AssemblyName>FastGraph</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <Description>Graph rendering lib</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -45,6 +47,9 @@
   <ItemGroup>
     <Folder Include="Rendering\" />
     <Folder Include="IO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FastGraph.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
