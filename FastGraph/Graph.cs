@@ -10,6 +10,9 @@ namespace FastGraph
 
         public GraphStyle Style;
 
+        public string xAxisName = "X";
+        public string yAxisName = "Y";
+
         public float xPointersSpace = 10;
         public float yPointersSpace = 10;
 

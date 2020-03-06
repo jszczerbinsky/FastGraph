@@ -39,19 +39,22 @@ namespace FastGraph
             }
         }
 
-        public int xMargin = 40;
-        public int yMargin = 40;
+        public int LeftMargin = 100;
+        public int BottomMargin = 70;
+        public int TopMargin = 40;
+        public int RightMargin = 500;
 
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
+        public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);
 
         public Font NodeNameFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
-
+        public Font AxisNameFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
         public Font AsymptoteFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
+        public Font ValuePointersFont = SystemFonts.DefaultFont;
 
         public Brush Background = new SolidBrush(Color.Wheat);
-
         public Brush ValuePointersTextBrush = new SolidBrush(Color.Black);
-        public Font ValuePointersFont = SystemFonts.DefaultFont;
-        public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);
+        public Brush AxisNameBrush = new SolidBrush(Color.Black);
+
     }
 }
