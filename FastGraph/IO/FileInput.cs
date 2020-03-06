@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 
 namespace FastGraph.IO
@@ -40,6 +39,7 @@ namespace FastGraph.IO
                     foreach (char c in line)
                     {
                         if (c == separator) { actualCol++; continue; }
+                        if (c == '\"' || c == '\'') continue;
                         if (actualCol == xColumntID)
                             xColBuff += c;
                         if (actualCol == yColumnID)
