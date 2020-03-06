@@ -120,7 +120,7 @@ namespace FastGraph.Rendering
                 if (graph.ShowGrid)
                     start.Y = 0;
 
-                g.DrawString(x.ToString(), SystemFonts.DefaultFont, graph.Style.ValuePointersTextBrush, new PointF(
+                g.DrawString(x.ToString(), graph.Style.AxesFont, graph.Style.ValuePointersTextBrush, new PointF(
                     (float)((x-xStart) * xScale + graph.Style.xMargin),
                     imageSize.Height - graph.Style.yMargin
                 ), sfx);
@@ -139,7 +139,7 @@ namespace FastGraph.Rendering
                 if (graph.ShowGrid)
                     end.X = imageSize.Width;
 
-                g.DrawString(y.ToString(), SystemFonts.DefaultFont, graph.Style.ValuePointersTextBrush, new PointF(
+                g.DrawString(y.ToString(), graph.Style.AxesFont, graph.Style.ValuePointersTextBrush, new PointF(
                   0,
                   (float)((ySize-y+yStart) * yScale)
 

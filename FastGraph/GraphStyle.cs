@@ -42,6 +42,8 @@ namespace FastGraph
         public int xMargin = 40;
         public int yMargin = 40;
 
+        public Font AxesFont = SystemFonts.DialogFont;
+
         public Brush Background = new SolidBrush(Color.Wheat);
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
 
