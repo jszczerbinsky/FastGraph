@@ -66,6 +66,8 @@ namespace FastGraph.Rendering
         }
         private static void RenderNode(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale, Graph graph, GraphNode node, Size imageSize)
         {
+            Point p2 = new Point();
+
             for (int i = 0; i < node.Values.Count-1; i++)
             {
                 double x = node.Values[i].X;
@@ -82,7 +84,7 @@ namespace FastGraph.Rendering
                         imageSize.Height - ymar - (int)((y - (double)yStart) * yScale)
                     );
 
-                Point p2 = new Point(
+                p2 = new Point(
                         xmar + (int)((x1 - (double)xStart) * xScale),
                         imageSize.Height - ymar - (int)((y1 - (double)yStart) * yScale)
                     );
@@ -99,6 +101,14 @@ namespace FastGraph.Rendering
                     p2
                 );
             }
+
+            p2.X += 10;
+            StringFormat sf = new StringFormat()
+            {
+                LineAlignment = StringAlignment.Center
+            };
+            g.DrawString(node.Name, graph.Style.NodeNameFont, new SolidBrush(node.Color), p2, sf);
+
         }
         private static void RenderValuePointers(Graphics g, int xStart, int yStart, int xSize, int ySize, double xScale, double yScale,Size imageSize, Graph graph)
         {
@@ -120,7 +130,7 @@ namespace FastGraph.Rendering
                 if (graph.ShowGrid)
                     start.Y = 0;
 
-                g.DrawString(x.ToString(), graph.Style.AxesFont, graph.Style.ValuePointersTextBrush, new PointF(
+                g.DrawString(x.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
                     (float)((x-xStart) * xScale + graph.Style.xMargin),
                     imageSize.Height - graph.Style.yMargin
                 ), sfx);
@@ -131,7 +141,7 @@ namespace FastGraph.Rendering
                     end
                 );
             }
-            for (float y = yStart; y<=yStart+ySize; y += graph.yPointersSpace)
+            for (float y = yStart; y<=yStart+ySize - graph.yPointersSpace; y += graph.yPointersSpace)
             {
                 Point start = new Point(graph.Style.yMargin, (int)((ySize - y + yStart) * yScale));
                 Point end = new Point(graph.Style.yMargin + 10, (int)((ySize - y + yStart) * yScale));
@@ -139,7 +149,7 @@ namespace FastGraph.Rendering
                 if (graph.ShowGrid)
                     end.X = imageSize.Width;
 
-                g.DrawString(y.ToString(), graph.Style.AxesFont, graph.Style.ValuePointersTextBrush, new PointF(
+                g.DrawString(y.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
                   0,
                   (float)((ySize-y+yStart) * yScale)
 
