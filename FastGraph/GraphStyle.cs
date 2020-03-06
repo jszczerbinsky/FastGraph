@@ -44,7 +44,9 @@ namespace FastGraph
 
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
 
-        public Font NodeNameFont = SystemFonts.DefaultFont;
+        public Font NodeNameFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
+
+        public Font AsymptoteFont = new Font(FontFamily.GenericSansSerif, 9, FontStyle.Bold);
 
         public Brush Background = new SolidBrush(Color.Wheat);
 

@@ -59,7 +59,7 @@ namespace FastGraph.Rendering
                 StringFormat sf = new StringFormat();
                 if (asymptote.Axis == Axis.X)
                     sf.FormatFlags = StringFormatFlags.DirectionVertical;
-                g.DrawString(s, SystemFonts.DefaultFont, new SolidBrush(asymptote.Color), new PointF(start.X+ 10, start.Y+ 10), sf);
+                g.DrawString(s, graph.Style.AsymptoteFont, new SolidBrush(asymptote.Color), new PointF(start.X+ 10, start.Y+ 10), sf);
             }
 
             g.DrawLine(new Pen(new SolidBrush(asymptote.Color)), start, end);
