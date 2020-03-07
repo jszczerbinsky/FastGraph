@@ -45,6 +45,23 @@ namespace FastGraph
         public int TopMargin = 40;
         public int RightMargin = 40;
 
+        public int xValuePointerOutLength = 10;
+        public int xValuePointerInLength = 10;
+        public int yValuePointerOutLength = 10;
+        public int yValuePointerInLength = 10;
+
+        public int xValuePointerMargin = 20;
+        public int yValuePointerMargin = 20;
+
+        public bool ShowXAxisName = true;
+        public bool ShowYAxisName = true;
+
+        public bool DisplayXValuePointers = true;
+        public bool DisplayYValuePointers = true;
+
+        public bool DisplayXValuePointersLines = true;
+        public bool DisplayYValuePointersLines = true;
+
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
         public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);
 

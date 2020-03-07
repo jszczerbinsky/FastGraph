@@ -46,8 +46,10 @@ namespace FastGraph.Rendering
                 FormatFlags = StringFormatFlags.DirectionVertical,
                 Alignment = StringAlignment.Center
             };
-            g.DrawString(graph.xAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(graph.Style.LeftMargin + (imageSize.Width - graph.Style.LeftMargin - graph.Style.RightMargin)/2, imageSize.Height - 20), sfx);
-            g.DrawString(graph.yAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(20, graph.Style.TopMargin + (imageSize.Height - graph.Style.TopMargin - graph.Style.BottomMargin)/2), sfy);
+            if(graph.Style.ShowXAxisName)
+                g.DrawString(graph.xAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(graph.Style.LeftMargin + (imageSize.Width - graph.Style.LeftMargin - graph.Style.RightMargin)/2, imageSize.Height - 20), sfx);
+            if(graph.Style.ShowYAxisName)
+                g.DrawString(graph.yAxisName, graph.Style.AxisNameFont, graph.Style.AxisNameBrush, new PointF(20, graph.Style.TopMargin + (imageSize.Height - graph.Style.TopMargin - graph.Style.BottomMargin)/2), sfy);
         }
         private static void RenderAsymptote(Graphics g, int xStart, int yStart, int ySize, double xScale, double yScale, Size imageSize, Graph graph, Asymptote asymptote)
         {
@@ -139,39 +141,50 @@ namespace FastGraph.Rendering
 
             for (float x = xStart; x <= xSize; x+= graph.xPointersSpace)
             {
-                Point start = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin - 10);
-                Point end = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin + 10);
+                Point start = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin - graph.Style.xValuePointerInLength);
+                Point end = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin + graph.Style.xValuePointerOutLength);
 
                 if (graph.ShowGrid)
                     start.Y = graph.Style.TopMargin;
 
-                g.DrawString(x.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
-                    (float)((x-xStart) * xScale + graph.Style.LeftMargin),
-                    imageSize.Height - graph.Style.BottomMargin + 20
-                ), sfx);
+                if(graph.Style.DisplayXValuePointers)
+                    g.DrawString(x.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
+                        (float)((x-xStart) * xScale + graph.Style.LeftMargin),
+                        imageSize.Height - graph.Style.BottomMargin + graph.Style.xValuePointerMargin 
+                    ), sfx);
 
-                g.DrawLine(graph.Style.ValuePointersPen,
-                    start,
-                    end
-                );
+                if (graph.Style.DisplayXValuePointersLines || graph.ShowGrid)
+                {
+                    if (!graph.Style.DisplayXValuePointersLines)
+                        start.Y = imageSize.Height - graph.Style.BottomMargin;
+                    g.DrawLine(graph.Style.ValuePointersPen,
+                            start,
+                            end
+                        );
+                }
             }
             for (float y = yStart; y<=yStart+ySize - graph.yPointersSpace; y += graph.yPointersSpace)
             {
-                Point start = new Point(graph.Style.LeftMargin -10, (int)((ySize - y + yStart) * yScale + graph.Style.TopMargin));
-                Point end = new Point(graph.Style.LeftMargin + 10, (int)((ySize - y + yStart) * yScale) + graph.Style.TopMargin);
+                Point start = new Point(graph.Style.LeftMargin -graph.Style.yValuePointerOutLength, (int)((ySize - y + yStart) * yScale + graph.Style.TopMargin));
+                Point end = new Point(graph.Style.LeftMargin + graph.Style.yValuePointerInLength, (int)((ySize - y + yStart) * yScale) + graph.Style.TopMargin);
 
                 if (graph.ShowGrid)
                     end.X = imageSize.Width - graph.Style.RightMargin;
-
+                if(graph.Style.DisplayYValuePointers)
                 g.DrawString(y.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
-                  graph.Style.LeftMargin - 20,
+                  graph.Style.LeftMargin - graph.Style.yValuePointerMargin,
                   (float)((ySize - y + yStart) * yScale + graph.Style.TopMargin)
-                  ), sfy); 
-                  
-                  g.DrawLine(graph.Style.ValuePointersPen,
-                    start,
-                    end
-                    );
+                  ), sfy);
+
+                if (graph.Style.DisplayYValuePointersLines || graph.ShowGrid)
+                {
+                    if (!graph.Style.DisplayYValuePointersLines)
+                        start.X = graph.Style.LeftMargin;
+                    g.DrawLine(graph.Style.ValuePointersPen,
+                        start,
+                        end
+                        );
+                }
             }
         }
         public static Bitmap Image(int xStart, int yStart, int xSize, int ySize, Size imageSize, Graph graph)
