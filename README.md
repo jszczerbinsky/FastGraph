@@ -4,7 +4,7 @@ decide about its size and values offset. FastGraph is the easiest way to generat
 
 ![Alt text](img/screen1.png?raw=true "screen")
 
-## Advantages
+## Features
 > Load data from csv and specify which columns to use 
 
 > Write data by hand
