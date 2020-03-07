@@ -44,11 +44,11 @@ FastGraph is .NET 4.7 library written in C#, created for rendering line graphs f
     
     Manually putting data:
     
-        ```C#
-        node.Values.Add(new Coordinate(1, 140));
-        node.Values.Add(new Coordinate(2, 95));
-        node.Values.Add(new Coordinate(3, 112));
-        ```
+    ```C#
+    node.Values.Add(new Coordinate(1, 140));
+    node.Values.Add(new Coordinate(2, 95));
+    node.Values.Add(new Coordinate(3, 112));
+    ```
     
     Loading data from file:
         
