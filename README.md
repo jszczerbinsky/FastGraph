@@ -33,7 +33,7 @@ FastGraph is .NET 4.7 library written in C#, created for rendering line graphs f
     myFirstGraph.yPointersSpace = 10;
     ```
     
-2. Add data to your chart
+2. Add data to your graph
     
     Create new `GraphNode` instance
     ```C#
@@ -70,6 +70,14 @@ FastGraph is .NET 4.7 library written in C#, created for rendering line graphs f
     FileInput input = new FileInput();
     input.LoadCSV(node, "path/to/your/file.csv", false, 1, 2, ',');
     ```
+    
+    Add your node to your graph
+    
+    ```C#
+    myFirstGraph.AddNode(node);
+    ```
+    
+    You can create and add multiple nodes to graph 
     
 3. Maybe some asymptotes?
     
