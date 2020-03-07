@@ -62,6 +62,8 @@ namespace FastGraph
         public bool DisplayXValuePointersLines = true;
         public bool DisplayYValuePointersLines = true;
 
+        public bool ShowGrid = true;
+
         public Pen AxisPen = new Pen(new SolidBrush(Color.Black), 2);
         public Pen ValuePointersPen = new Pen(new SolidBrush(Color.Black), 2);
 

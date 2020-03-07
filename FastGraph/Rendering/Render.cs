@@ -144,7 +144,7 @@ namespace FastGraph.Rendering
                 Point start = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin - graph.Style.xValuePointerInLength);
                 Point end = new Point((int)((x - xStart) * xScale + graph.Style.LeftMargin), imageSize.Height - graph.Style.BottomMargin + graph.Style.xValuePointerOutLength);
 
-                if (graph.ShowGrid)
+                if (graph.Style.ShowGrid)
                     start.Y = graph.Style.TopMargin;
 
                 if(graph.Style.DisplayXValuePointers)
@@ -153,7 +153,7 @@ namespace FastGraph.Rendering
                         imageSize.Height - graph.Style.BottomMargin + graph.Style.xValuePointerMargin 
                     ), sfx);
 
-                if (graph.Style.DisplayXValuePointersLines || graph.ShowGrid)
+                if (graph.Style.DisplayXValuePointersLines || graph.Style.ShowGrid)
                 {
                     if (!graph.Style.DisplayXValuePointersLines)
                         start.Y = imageSize.Height - graph.Style.BottomMargin;
@@ -168,7 +168,7 @@ namespace FastGraph.Rendering
                 Point start = new Point(graph.Style.LeftMargin -graph.Style.yValuePointerOutLength, (int)((ySize - y + yStart) * yScale + graph.Style.TopMargin));
                 Point end = new Point(graph.Style.LeftMargin + graph.Style.yValuePointerInLength, (int)((ySize - y + yStart) * yScale) + graph.Style.TopMargin);
 
-                if (graph.ShowGrid)
+                if (graph.Style.ShowGrid)
                     end.X = imageSize.Width - graph.Style.RightMargin;
                 if(graph.Style.DisplayYValuePointers)
                 g.DrawString(y.ToString(), graph.Style.ValuePointersFont, graph.Style.ValuePointersTextBrush, new PointF(
@@ -176,7 +176,7 @@ namespace FastGraph.Rendering
                   (float)((ySize - y + yStart) * yScale + graph.Style.TopMargin)
                   ), sfy);
 
-                if (graph.Style.DisplayYValuePointersLines || graph.ShowGrid)
+                if (graph.Style.DisplayYValuePointersLines || graph.Style.ShowGrid)
                 {
                     if (!graph.Style.DisplayYValuePointersLines)
                         start.X = graph.Style.LeftMargin;

@@ -16,8 +16,6 @@ namespace FastGraph
         public float xPointersSpace = 10;
         public float yPointersSpace = 10;
 
-        public bool ShowGrid = true;
-
         public Graph()
         {
             this.Style = GraphStyle.Classic;
