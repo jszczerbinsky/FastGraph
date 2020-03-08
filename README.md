@@ -59,7 +59,7 @@ FastGraph is .NET 4.7 library written in C#, created for rendering line graphs f
     
     >Path to file [`string`]
     
-    >Ignore first line in file [`string`]
+    >Ignore first line in file [`bool`]
     
     >Column that stores x axis data [`int`]
     
