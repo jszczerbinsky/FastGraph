@@ -112,10 +112,13 @@ namespace FastGraph.Rendering
                     g.FillEllipse(new SolidBrush(node.Color), p2.X - 4, p2.Y - 4, 8, 8);
                 }
 
-                g.DrawLine(new Pen(new SolidBrush(node.Color),2 ),
-                    p1,
-                    p2
-                );
+                if(node.RenderLines)
+                {
+                    g.DrawLine(new Pen(new SolidBrush(node.Color),2 ),
+                        p1,
+                        p2
+                    );
+                }
             }
 
             p2.X += 10;
