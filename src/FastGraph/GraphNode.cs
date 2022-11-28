@@ -15,6 +15,8 @@ namespace FastGraph
 
         public bool RenderLines = true;
 
+        public bool RenderName = true;
+
         public GraphNode(string name)
         {
             this.Name = name;
