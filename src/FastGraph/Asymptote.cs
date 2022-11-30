@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Security.Permissions;
 
 namespace FastGraph
 {
     public class Asymptote
     {
         public Axis Axis { get; private set; }
-        public double Coordinate { get; private set; }
+        public double aFactor;
+        public double bFactor;
         public Color Color = Color.Green;
-        public bool RenderCoordinate = true;
-        public string CustomName;
+        public DashStyle DashStyle = DashStyle.Dot;
 
-        public Asymptote(string customName, Axis axis, double coordinate)
-        {
-            this.CustomName = customName;
-            this.Axis = axis;
-            this.Coordinate = coordinate;
-        }
-        public Asymptote(Axis axis, double coordinate)
+        public Asymptote(Axis axis, double aFactor, double bFactor)
         {
             this.Axis = axis;
-            this.Coordinate = coordinate;
+            this.aFactor = aFactor;
+            this.bFactor = bFactor;
         }
+
+        public double Function(double x)
+        {
+            return aFactor * x + bFactor; 
+        }
+
     }
 }
